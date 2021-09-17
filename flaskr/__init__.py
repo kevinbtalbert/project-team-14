@@ -12,7 +12,6 @@ def create_app():
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
         SECRET_KEY="dev",
-        # store the database in the instance folder
         MYSQL_DATABASE_HOST='localhost',
         MYSQL_DATABASE_PORT=3306,
         MYSQL_DATABASE_USER='Team14',
