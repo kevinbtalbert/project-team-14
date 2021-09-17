@@ -14,27 +14,25 @@ def create_app():
         SECRET_KEY="dev",
         # store the database in the instance folder
         MYSQL_DATABASE_HOST='localhost',
-        MYSQL_DATABASE_PORT='3306',
+        MYSQL_DATABASE_PORT=3306,
         MYSQL_DATABASE_USER='Team14',
         MYSQL_DATABASE_PASSWORD='password',
-        MYSQL_DATABASE_DB=None,
-        MYSQL_DATABASE_CHARSET='utf-8',
-
+        MYSQL_DATABASE_DB='users',
+        MYSQL_DATABASE_CHARSET=None,
     )
 
     mysql = MySQL()
     mysql.init_app(app)
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
 
     @app.route("/hello")
     def hello():
         cursor = mysql.get_db().cursor()
+        cursor.execute("USE users")
+        user = cursor.execute("SELECT * FROM users")
+        rows = cursor.fetchall()
+        cursor.close()
+        print(rows)
         print("hello world")
-        print(cursor)
         return "Hello, World!"
 
     return app
