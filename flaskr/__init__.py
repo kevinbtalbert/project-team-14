@@ -31,7 +31,7 @@ def create_app():
         rows = cursor.fetchall()
         cursor.close()
         print(rows)
-        print("hello world")
+        print("hello world!")
         return "Hello, World!"
 
     return app
