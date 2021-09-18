@@ -32,6 +32,6 @@ def create_app():
         cursor.close()
         print(rows)
         print("hello world!")
-        return "Hello, World!"
+        return "Hello, There!"
 
     return app
