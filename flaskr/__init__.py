@@ -36,5 +36,5 @@ def create_app(config=None):
         data = query_db("SELECT * FROM users")
         print(data)
         return render_template("index.html", data=data)
-
+      
     return app
