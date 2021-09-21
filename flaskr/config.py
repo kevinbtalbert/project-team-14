@@ -20,6 +20,7 @@ class BaseConfig(object):
 
 class DevelopmentConfig(BaseConfig):
     SERVER_NAME = "localhost:8080"
+    DEVELOPMENT = True
     DEBUG = True
 
 
