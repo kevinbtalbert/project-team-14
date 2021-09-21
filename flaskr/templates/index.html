@@ -1,0 +1,18 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+The Black Tie Management System
+{% endblock %}
+
+{% block body %}
+
+<h1>Welcome to The Black Tie Management System</h1>
+<h2>This is a list of our current users:</h2>
+
+{% for user in data %}
+<h3>{{ user }}</h3>
+{% endfor %}
+
+
+{% endblock %}
+
