@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0000000">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="description" content="The Black Tie Management System">
+    <link href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    {% block resources %}{% endblock %}
+</head>
+
+<body>
+<div id="root">
+    {% block body %}{% endblock %}
+
+</div>
+</body>
+</html>

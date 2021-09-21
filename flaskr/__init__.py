@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template, url_for
 from flaskext.mysql import MySQL
 
 
@@ -31,10 +31,10 @@ def create_app(config=None):
         cursor.close()
         return result
 
-    @app.route("/hello")
+    @app.route("/")
     def hello():
-        print(query_db("SELECT * FROM users"))
-        print("hello world")
-        return "Hello, World!"
+        data = query_db("SELECT * FROM users")
+        print(data)
+        return render_template("index.html", data=data)
 
     return app
