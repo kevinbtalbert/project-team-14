@@ -1,0 +1,40 @@
+{% extends 'customers/nav_customers.html' %}
+
+{% block title %}
+Customer Lookup
+{% endblock %}
+
+
+{% block customer_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Customer Lookup
+{% endblock %}
+
+{% block innerdescription %}
+Use this utility to search for a customer profile and edit the customer's profile/sizing information.
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <dl>{{ render_field(form.first_name, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Last Name</label>
+                <dl>{{ render_field(form.last_name, class="form-control") }}</dl>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}
