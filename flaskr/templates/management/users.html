@@ -1,0 +1,21 @@
+{% extends 'utils/nav.html' %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block user_tab_active %}
+active
+{% endblock %}
+
+{% block body %}
+
+<h1>Welcome to The Black Tie Management System</h1>
+<h2>This is a list of the current users:</h2>
+
+{% for user in data %}
+<h3>{{ user }}</h3>
+{% endfor %}
+
+
+{% endblock %}

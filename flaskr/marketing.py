@@ -1,11 +1,11 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 
 
-bp = Blueprint('products', __name__, url_prefix='/products')
+bp = Blueprint('marketing', __name__, url_prefix='/marketing')
 
 @bp.route('/', methods=('GET', 'POST'))
-def products():
+def marketing():
     """
     Route for the 'product' landing page
     """
-    return render_template("products/products.html")
+    return render_template("marketing/email.html")

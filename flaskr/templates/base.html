@@ -4,18 +4,29 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#0000000">
     <meta http-equiv="X-UA-Compatible" content="IE-Edge">
     <meta name="description" content="The Black Tie Management System">
-    <link href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon_btms/favicon.ico') }}">
+    <link href="{{ url_for('static', filename='bootstrap-4.0.0-dist/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap-custom/css/offcanvas.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap-custom/css/footer.css') }}" rel="stylesheet">
     {% block resources %}{% endblock %}
 </head>
 
-<body>
-<div id="root">
-    {% block body %}{% endblock %}
-
-</div>
+<body class="bg-light">
+{% block nav %}{% endblock %}
+<main role="main">
+{% block body %}{% endblock %}
+</main>
 </body>
+
+<br><br>
+<footer class="footer">
+    <div class="container">
+      <span class="text-muted">© The Black Tie Management System 2021</span>
+    </div>
+</footer>
+
 </html>

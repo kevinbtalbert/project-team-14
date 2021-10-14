@@ -1,0 +1,65 @@
+{% extends 'customers/nav_customers.html' %}
+
+{% block title %}
+Create New Customer Profile
+{% endblock %}
+
+
+{% block customer_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Create New Customer Profile
+{% endblock %}
+
+{% block innerdescription %}
+Use this form to create a new customer profile.
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <dl>{{ render_field(form.first_name, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Last Name</label>
+                <dl>{{ render_field(form.last_name, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <dl>{{ render_field(form.email, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Phone number</label>
+                <dl>{{ render_field(form.phone, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Date of Birth</label>
+                <dl>{{ render_field(form.dob, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Gender</label>
+                <dl>{{ render_field(form.gender, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Street Address</label>
+                <dl>{{ render_field(form.address_street, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">City</label>
+                <dl>{{ render_field(form.address_city, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">State</label>
+                <dl>{{ render_field(form.address_state, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Zip</label>
+                <dl>{{ render_field(form.address_zip, class="form-control") }}</dl>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}
