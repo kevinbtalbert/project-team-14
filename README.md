@@ -6,9 +6,13 @@ Kevin Talbert, Jimmy Kropp, Prasanna Shanmugakumarasamy, and Sean Yarrows
 
 # Requirements
 -- Python Version 3.7+
+
 -- VSCode (or equivalent Python IDE with virtual environment capabilities)
+
 -- Local PIP File Installation
+
 -- DB Browser for manually navigating database file (SQLite3)
+
 
 # Usage / Installation
 1) Pull the latest version of the `main` branch in Github (or `release` when project is finalized)
