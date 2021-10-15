@@ -19,7 +19,7 @@ class DevelopmentConfig(BaseConfig):
 
 
 class TestingConfig(BaseConfig):
-    DATABASE = 'flaskr/database/appdata.db'
+    DATABASE = 'flaskr/tests/test_database/test_appdata.db'
     DEBUG = True
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     TESTING = True
