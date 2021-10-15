@@ -7,5 +7,6 @@ bp = Blueprint('marketing', __name__, url_prefix='/marketing')
 def marketing():
     """
     Route for the 'product' landing page
+    :return: rendered template
     """
     return render_template("marketing/email.html")
