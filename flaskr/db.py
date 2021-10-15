@@ -84,6 +84,8 @@ class DB_Commands:
     def find_profile_by_id(id):
         """
         Method to find a customer profile by its id
+        :param id: integer value of id in the database
+        :return: result of query to database
         """
         return query_db("SELECT id, first_name, last_name, email, phone, dob, gender, address_street, address_city, address_state, address_zip, bust, waist, hip, chest, shoulders, inseam, neck, arm, anniversary FROM profile WHERE id = ?", (id,))
 
@@ -91,6 +93,9 @@ class DB_Commands:
     def find_profile_id_by_name(first_name, last_name):
         """
         Method to find a customer profile id by first and last name
+        :param first_name: string value of first_name in the database
+        :param last_name: string value of first_name in the database
+        :return: result of query to database
         """
         return query_db("SELECT id FROM profile WHERE first_name = ? AND last_name = ?", (first_name, last_name,))
 
@@ -98,6 +103,17 @@ class DB_Commands:
     def insert_new_profile(first_name="None Provided", last_name="None Provided", email="None Provided", phone="None Provided", dob="None Provided", gender="None Provided", address_street="None Provided", address_city="None Provided", address_state="None Provided", address_zip="None Provided"):
         """
         Command to insert a new profile based on passed in parameters
+        :param first_name: string value of first_name in the database (if not supplied, parameter assumes "None Provided")
+        :param last_name: string value of last_name in the database (if not supplied, parameter assumes "None Provided")
+        :param email: string value of email in the database (if not supplied, parameter assumes "None Provided")
+        :param phone: string value of phone in the database (if not supplied, parameter assumes "None Provided")
+        :param dob: string value of dob in the database (if not supplied, parameter assumes "None Provided")
+        :param gender: string value of gender in the database (if not supplied, parameter assumes "None Provided")
+        :param address_street: string value of address_street in the database (if not supplied, parameter assumes "None Provided")
+        :param address_city: string value of address_city in the database (if not supplied, parameter assumes "None Provided")
+        :param address_state: string value of address_state in the database (if not supplied, parameter assumes "None Provided")
+        :param address_zip: string value of address_zip in the database (if not supplied, parameter assumes "None Provided")
+        :return: integer value of id, the newest profile in the database
         """
         if first_name != "None Provided" and last_name != "None Provided":
             update_db("INSERT INTO profile (first_name, last_name, email, phone, dob, gender, address_street, address_city, address_state, address_zip) VALUES (?,?,?,?,?,?,?,?,?,?)",
@@ -116,6 +132,24 @@ class DB_Commands:
     def update_profile(id, first_name=None, last_name=None, email=None, phone=None, dob=None, gender=None, address_street=None, address_city=None, address_state=None, address_zip=None, bust=None, waist=None, hip=None, chest=None, shoulders=None, inseam=None, neck=None, arm=None):
         """
         Command to update particular elements of a customer's profile
+        :param first_name: string value of first_name in the database (if not supplied, parameter assumes "None Provided")
+        :param last_name: string value of last_name in the database (if not supplied, parameter assumes "None Provided")
+        :param email: string value of email in the database (if not supplied, parameter assumes "None Provided")
+        :param phone: string value of phone in the database (if not supplied, parameter assumes "None Provided")
+        :param dob: string value of dob in the database (if not supplied, parameter assumes "None Provided")
+        :param gender: string value of gender in the database (if not supplied, parameter assumes "None Provided")
+        :param address_street: string value of address_street in the database (if not supplied, parameter assumes "None Provided")
+        :param address_city: string value of address_city in the database (if not supplied, parameter assumes "None Provided")
+        :param address_state: string value of address_state in the database (if not supplied, parameter assumes "None Provided")
+        :param address_zip: string value of address_zip in the database (if not supplied, parameter assumes "None Provided")
+        :param bust: string value of bust in the database (if not supplied, parameter assumes "None Provided")
+        :param waist: string value of waist in the database (if not supplied, parameter assumes "None Provided")
+        :param hip: string value of hip in the database (if not supplied, parameter assumes "None Provided")
+        :param chest: string value of chest in the database (if not supplied, parameter assumes "None Provided")
+        :param shoulders: string value of shoulders in the database (if not supplied, parameter assumes "None Provided")
+        :param inseam: string value of inseam in the database (if not supplied, parameter assumes "None Provided")
+        :param neck: string value of neck in the database (if not supplied, parameter assumes "None Provided")
+        :param arm: string value of arm in the database (if not supplied, parameter assumes "None Provided")
         """
         args = locals()
         for param, value in args.items():
@@ -169,10 +203,12 @@ class DB_Commands:
                     update_db(
                         "UPDATE profile SET arm=? WHERE id=?", (value, id,))
 
+
     @staticmethod
     def delete_profile(id):
         """
         Command to delete customer's profile by id
+        :param id: integer value of id, the newest profile in the database
         """
         update_db("DELETE FROM profile WHERE id=?", (id,))
 
@@ -183,13 +219,18 @@ class Auth:
     def find_all_users():
         """
         Find all users in database and their associated data
+        :return result of query to database for all users
         """
         return query_db("SELECT id, first_name, last_name, role, username FROM users", ())
+
 
     @staticmethod
     def find_user_id(username, password):
         """
         Find user id in database from username
+        :param username: string username of the user
+        :param password: string password of the user
+        :return: user id if successful, 0 if not found
         """
         try:
             user_id = query_db(
@@ -200,10 +241,12 @@ class Auth:
             user_id = 0
         return user_id
 
+
     @staticmethod
     def find_user_information(user_id):
         """
         Find user information from user's id
+        :return: dictionary list of user information
         """
         try:
             user_info = query_db(

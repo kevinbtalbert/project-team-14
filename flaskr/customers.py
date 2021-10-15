@@ -7,6 +7,7 @@ bp = Blueprint('customers', __name__, url_prefix='/customers')
 def customers():
     """
     Route for the 'customer' landing page
+    :return: rendered template
     """
     headings = ("Customer ID", "Customer First Name", "Customer Last Name", "Customer Email", "Customer Phone Number", "View Profile")
     df = sql_to_df("SELECT id, first_name, last_name, email, phone FROM profile")
@@ -41,6 +42,7 @@ def new_customer():
 def lookup_customer():
     """
     Route for the 'lookup customer' landing page
+    :return: rendered template
     """
     lookup_customer_form = LookupCustomerForm(request.form)
     if request.method == 'POST':
@@ -60,6 +62,8 @@ def lookup_customer():
 def customer_profile_by_id(id=None):
     """
     Route for looking up customer by id
+    :param id: represents the numerical id of the customer in the database (assumes None by default)
+    :return: rendered template
     """
     try:
         search_string = id.data['search']
@@ -79,6 +83,8 @@ def customer_profile_by_id(id=None):
 def edit_customer_profile_by_id(id):
     """
     Route for editing customer profile by id
+    :param id: represents the numerical id of the customer in the database
+    :return: rendered template
     """
     edit_customer_form = ProfileContactForm(request.form)
     try:
@@ -127,6 +133,8 @@ def edit_customer_profile_by_id(id):
 def edit_customer_sizing_by_id(id):
     """
     Route for editing customer sizing by id
+    :param id: represents the numerical id of the customer in the database
+    :return: rendered template
     """
     edit_customer_form = ProfileSizingForm(request.form)
     try:
@@ -175,6 +183,8 @@ def edit_customer_sizing_by_id(id):
 def delete_customer_by_id(id):
     """
     Route for deleting customer profile by id
+    :param id: represents the numerical id of the customer in the database
+    :return: rendered template
     """
     edit_customer_form = ProfileContactForm(request.form)
     try:

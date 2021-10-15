@@ -6,6 +6,7 @@ bp = Blueprint('management', __name__, url_prefix='/management')
 def management():
     """
     Route for the 'product' landing page
+    :return: rendered template
     """
     return render_template("management/management.html")
 
@@ -14,10 +15,7 @@ def management():
 def users():
     """
     Route for the 'product' landing page
+    :return: rendered template
     """
     data = DB_Commands.find_all_users()
     return render_template("management/users.html", data=data)
-
-
-def lookup_user(user):
-    pass
