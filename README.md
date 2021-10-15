@@ -1,7 +1,8 @@
 # Project Team 14
 Repo for Project Team 14
+
 **Team Members**
-Kevin Talbert, 
+Kevin Talbert, Jimmy Kropp, Prasanna Shanmugakumarasamy, and Sean Yarrows
 
 # Requirements
 -- Python Version 3.7+
