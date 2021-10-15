@@ -1,0 +1,70 @@
+{% extends 'customers/nav_customers.html' %}
+
+{% block title %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block customer_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block innerdescription %}
+You are editing {{ data[1] }} {{ data[2] }}'s profile, created on {{ data[19] }}
+{% endblock %}
+
+{% block innerbody %}
+{% from "macros/_formhelpers.html" import render_field %}
+{% if current_user.is_authenticated %}
+<div class="jumbotron rounded bg-white justify-content-center">
+    <div class="container rounded bg-white justify-content-center">
+        <form method="post">
+            <div class="row">
+                <div class="col">
+                    <span>Email</span>
+                    <dl>{{ render_field(form.email, class="form-control", placeholder=data[3], autofocus="") }}</dl>
+                    <span>Phone Number</span>
+                    <dl>{{ render_field(form.phone, class="form-control", placeholder=data[4], autofocus="") }}</dl>
+                </div>
+                <div class="col">
+                    <span>Date of Birth</span>
+                    <dl>{{ render_field(form.dob, class="form-control", placeholder=data[5], autofocus="") }}</dl>
+                    <span>Gender</span>
+                    <dl>{{ render_field(form.gender, class="form-control", placeholder=data[6], autofocus="") }}</dl>
+                </div>
+                <div class="col">
+                    <span>Street Address</span>
+                    <dl>{{ render_field(form.address_street, class="form-control", placeholder=data[7], autofocus="") }}
+                    </dl>
+                    <dl>{{ render_field(form.address_city, class="form-control", placeholder=data[8], autofocus="") }}
+                    </dl>
+                    <dl>{{ render_field(form.address_state, class="form-control", placeholder=data[9], autofocus="") }}
+                    </dl>
+                    <dl>{{ render_field(form.address_zip, class="form-control", placeholder=data[10], autofocus="") }}
+                    </dl>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-outline-primary px-4">Save Profile</button>
+        </form>
+    </div>
+    <div class="text-center mt-3">
+        <div class="buttons">
+            <button class="btn btn-primary px-4 ms-3" onclick="goBack()">Cancel Edit</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}

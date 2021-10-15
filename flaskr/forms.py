@@ -11,7 +11,7 @@ class ProfileContactForm(Form):
     email = StringField('')
     phone = StringField('')
     dob = StringField('')
-    gender = SelectField('', choices=["Male", "Female", "Other Gender/Gender Nonconforming"])
+    gender = SelectField('', choices=["", "Male", "Female", "Other Gender/Gender Nonconforming"])
     address_street = StringField('')
     address_city = StringField('')
     address_state = SelectField('', choices=STATES_LIST)

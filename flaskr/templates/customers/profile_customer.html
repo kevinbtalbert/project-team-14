@@ -69,11 +69,17 @@ You are viewing {{ data[1] }} {{ data[2] }}'s profile, created on {{ data[19] }}
                 </tbody>
             </table>
             <br>
-            <div class="buttons"> <button class="btn btn-outline-primary px-4">Change Profile Data</button> <button
-                    class="btn btn-outline-primary px-4">Change Sizing Data</button> <button
-                    class="btn btn-primary px-4 ms-3">Delete Profile</button> </div>
+            <div class="buttons">
+                <a href="{{ data[0] }}/edit_profile"> <button class="btn btn-outline-primary px-4">Change Profile
+                        Data</button> </a>
+                <a href="{{ data[0] }}/edit_sizing">
+                    <button class="btn btn-outline-primary px-4">Change Sizing Data</button> </a>
+                <a href="{{ data[0] }}/delete_profile">
+                    <button class="btn btn-primary px-4 ms-3">Delete Profile</button> </a>
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endif %}

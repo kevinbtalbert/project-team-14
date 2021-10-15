@@ -1,0 +1,49 @@
+{% extends 'customers/nav_customers.html' %}
+
+{% block title %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block customer_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block innerdescription %}
+You are deleting {{ data[1] }} {{ data[2] }}'s profile, created on {{ data[19] }}
+{% endblock %}
+
+{% block innerbody %}
+{% from "macros/_formhelpers.html" import render_field %}
+{% if current_user.is_authenticated %}
+<div class="jumbotron rounded bg-white justify-content-center">
+    <div class="container rounded bg-white justify-content-center">
+        <form method="post">
+
+            <div class="text-center mt-3">
+                <h4>Are you sure you wish to delete {{ data[1] }} {{ data[2] }}'s profile?</h4>
+                <br><br>
+                <button type="submit" class="btn btn-outline-primary px-4">Yes</button>
+            </div>
+        </form>
+    </div>
+    <div class="text-center mt-3">
+        <div class="buttons">
+            <button class="btn btn-primary px-4 ms-3" onclick="goBack()">Go back</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}

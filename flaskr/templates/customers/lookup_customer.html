@@ -24,12 +24,18 @@ Use this utility to search for a customer profile and edit the customer's profil
     <div class="row">
         <form method="POST">
             <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <dl>{{ render_field(form.first_name, class="form-control") }}</dl>
-                <label for="exampleInputEmail1">Last Name</label>
-                <dl>{{ render_field(form.last_name, class="form-control") }}</dl>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <dl>{{ render_field(form.first_name, class="form-control") }}</dl>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Last Name</label>
+                        <dl>{{ render_field(form.last_name, class="form-control") }}</dl>
+                    </div>
+                </div>
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

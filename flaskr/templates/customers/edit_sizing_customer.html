@@ -1,0 +1,100 @@
+{% extends 'customers/nav_customers.html' %}
+
+{% block title %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block customer_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+{{ data[1] }} {{ data[2] }}
+{% endblock %}
+
+{% block innerdescription %}
+You are viewing {{ data[1] }} {{ data[2] }}'s profile, created on {{ data[19] }}
+{% endblock %}
+
+{% block innerbody %}
+{% from "macros/_formhelpers.html" import render_field %}
+{% if current_user.is_authenticated %}
+
+<div class="jumbotron rounded bg-white justify-content-center">
+    <div class="container rounded bg-white justify-content-center">
+        <div class="text-center mt-3">
+            <br><br>
+            <form method="POST">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Bust</th>
+                            <th>Waist</th>
+                            <th>Hip</th>
+                            <th>Chest</th>
+                            <th>Shoulders</th>
+                            <th>Inseam</th>
+                            <th>Neck</th>
+                            <th>Arm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dl>{{ render_field(form.bust, class="form-control", placeholder=data[11], autofocus="")
+                                    }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.waist, class="form-control", placeholder=data[12],
+                                    autofocus="") }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.hip, class="form-control", placeholder=data[13], autofocus="")
+                                    }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.chest, class="form-control", placeholder=data[14],
+                                    autofocus="") }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.shoulders, class="form-control", placeholder=data[15],
+                                    autofocus="") }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.inseam, class="form-control", placeholder=data[16],
+                                    autofocus="") }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.neck, class="form-control", placeholder=data[17], autofocus="")
+                                    }}</dl>
+                            </td>
+                            <td>
+                                <dl>{{ render_field(form.arm, class="form-control", placeholder=data[18], autofocus="")
+                                    }}</dl>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-outline-primary px-4">Save Profile</button>
+            </form>
+        </div>
+        </form>
+        <div class="text-center mt-3">
+            <div class="buttons">
+                <button class="btn btn-primary px-4 ms-3" onclick="goBack()">Cancel Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}
