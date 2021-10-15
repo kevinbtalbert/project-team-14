@@ -87,6 +87,12 @@ class DB_Commands:
         """
         return query_db("SELECT id, first_name, last_name, email, phone, dob, gender, address_street, address_city, address_state, address_zip, bust, waist, hip, chest, shoulders, inseam, neck, arm, anniversary FROM profile WHERE id = ?", (id,))
 
+    @staticmethod
+    def find_profile_id_by_name(first_name, last_name):
+        """
+        Method to find a customer profile id by first and last name
+        """
+        return query_db("SELECT id FROM profile WHERE first_name = ? AND last_name = ?", (first_name, last_name,))
 
     @staticmethod
     def insert_new_profile(first_name="None Provided", last_name="None Provided", email="None Provided", phone="None Provided", dob="None Provided", gender="None Provided", address_street="None Provided", address_city="None Provided", address_state="None Provided", address_zip="None Provided"):
@@ -105,6 +111,70 @@ class DB_Commands:
                 return 0
         else:
             return 0
+
+    @staticmethod
+    def update_profile(id, first_name=None, last_name=None, email=None, phone=None, dob=None, gender=None, address_street=None, address_city=None, address_state=None, address_zip=None, bust=None, waist=None, hip=None, chest=None, shoulders=None, inseam=None, neck=None, arm=None):
+        """
+        Command to update particular elements of a customer's profile
+        """
+        args = locals()
+        for param, value in args.items():
+            if value is not None:
+                if param == "email":
+                    update_db(
+                        "UPDATE profile SET email=? WHERE id=?", (value, id,))
+                if param == "phone":
+                    update_db(
+                        "UPDATE profile SET phone=? WHERE id=?", (value, id,))
+                if param == "dob":
+                    update_db(
+                        "UPDATE profile SET dob=? WHERE id=?", (value, id,))
+                if param == "gender":
+                    update_db(
+                        "UPDATE profile SET gender=? WHERE id=?", (value, id,))
+                if param == "address_street":
+                    update_db(
+                        "UPDATE profile SET address_street=? WHERE id=?", (value, id,))
+                if param == "address_city":
+                    update_db(
+                        "UPDATE profile SET address_city=? WHERE id=?", (value, id,))
+                if param == "address_state":
+                    update_db(
+                        "UPDATE profile SET address_state=? WHERE id=?", (value, id,))
+                if param == "address_zip":
+                    update_db(
+                        "UPDATE profile SET address_zip=? WHERE id=?", (value, id,))
+                if param == "bust":
+                    update_db(
+                        "UPDATE profile SET bust=? WHERE id=?", (value, id,))
+                if param == "waist":
+                    update_db(
+                        "UPDATE profile SET waist=? WHERE id=?", (value, id,))
+                if param == "hip":
+                    update_db(
+                        "UPDATE profile SET hip=? WHERE id=?", (value, id,))
+                if param == "chest":
+                    update_db(
+                        "UPDATE profile SET chest=? WHERE id=?", (value, id,))
+                if param == "shoulders":
+                    update_db(
+                        "UPDATE profile SET shoulders=? WHERE id=?", (value, id,))
+                if param == "inseam":
+                    update_db(
+                        "UPDATE profile SET inseam=? WHERE id=?", (value, id,))
+                if param == "neck":
+                    update_db(
+                        "UPDATE profile SET neck=? WHERE id=?", (value, id,))
+                if param == "arm":
+                    update_db(
+                        "UPDATE profile SET arm=? WHERE id=?", (value, id,))
+
+    @staticmethod
+    def delete_profile(id):
+        """
+        Command to delete customer's profile by id
+        """
+        update_db("DELETE FROM profile WHERE id=?", (id,))
 
 
 class Auth:
