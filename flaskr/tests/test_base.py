@@ -7,6 +7,8 @@ from flaskr import config
 
 app = create_app()
 
+## To test with coverage, use "coverage run -m unittest discover"
+## Then run "coverage report"
 
 class BaseTestCase(TestCase):
 
