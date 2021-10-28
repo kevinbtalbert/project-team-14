@@ -11,7 +11,8 @@ class ProfileContactForm(Form):
     email = StringField('')
     phone = StringField('')
     dob = StringField('')
-    gender = SelectField('', choices=["", "Male", "Female", "Other Gender/Gender Nonconforming"])
+    gender = SelectField(
+        '', choices=["", "Male", "Female", "Other Gender/Gender Nonconforming"])
     address_street = StringField('')
     address_city = StringField('')
     address_state = SelectField('', choices=STATES_LIST)
@@ -22,6 +23,8 @@ class LookupCustomerForm(Form):
     first_name = StringField('', validators=[DataRequired()])
     last_name = StringField('', validators=[DataRequired()])
 
+
+# This form captures the ability to lookup a customer by id
 class SearchCustomerById(Form):
     id = StringField('', validators=[DataRequired()])
 
@@ -36,6 +39,34 @@ class ProfileSizingForm(Form):
     inseam = StringField('')
     neck = StringField('')
     arm = StringField('')
+
+
+# This form captures all the product information
+class ProductForm(Form):
+    CATEGORY_LIST = ["", "Outer wear", "Active wear", "Swimwear", "Tailored Clothing & Suits", "Social wear & Special occasions", "Casual & Sports wear", "Leg wear", "Neck wear",
+                     "Shawls and wraps", "Bridal wear", "Evening wear", "Uniforms", "Knit wear", "Lounge wear", "Shirts and blouses", "Bottoms", "Sleep wear", "Other/Uncategorized"]
+    DEPT_LIST = ["", "Mens", "Womens", "Unisex/NA"]
+    product = StringField('', validators=[DataRequired()])
+    product_image_url = StringField('')
+    category = SelectField('', choices=CATEGORY_LIST)
+    company = StringField('')
+    company_logo_url = StringField('')
+    department = SelectField('', choices=DEPT_LIST)
+    msrp_cost = StringField('')
+    wholesale_cost = StringField('')
+    manufacturer = StringField('')
+    inv_quantity = StringField('')
+    description = StringField('')
+
+
+# This form captures the ability to lookup a product by name
+class LookupProductForm(Form):
+    product = StringField('', validators=[DataRequired()])
+
+
+# This form captures the ability to lookup a product by id
+class SearchProductById(Form):
+    id = StringField('', validators=[DataRequired()])
 
 
 # This form captures the signin

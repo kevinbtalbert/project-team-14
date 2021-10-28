@@ -1,0 +1,56 @@
+{% extends 'products/nav_products.html' %}
+
+{% block title %}
+Add New Product to Inventory
+{% endblock %}
+
+{% block product_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Add New Product to Inventory
+{% endblock %}
+
+{% block innerdescription %}
+Use this form to add a new product to the inventory.
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Product Name</label>
+                <dl>{{ render_field(form.product, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Product Image URL</label>
+                <dl>{{ render_field(form.product_image_url, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Product Category</label>
+                <dl>{{ render_field(form.category, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Company</label>
+                <dl>{{ render_field(form.company, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Company Logo URL</label>
+                <dl>{{ render_field(form.company_logo_url, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Department</label>
+                <dl>{{ render_field(form.department, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">MSRP Cost</label>
+                <dl>{{ render_field(form.msrp_cost, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Wholesale Cost</label>
+                <dl>{{ render_field(form.wholesale_cost, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Manufacturer</label>
+                <dl>{{ render_field(form.manufacturer, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Inventory/Stock Quantity</label>
+                <dl>{{ render_field(form.inv_quantity, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Product Description</label>
+                <dl>{{ render_field(form.description, class="form-control") }}</dl>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}

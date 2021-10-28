@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block nav %}
-
+{% from "macros/_formhelpers.html" import render_field %}
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" href="/">The Black Tie Management System</a>
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -26,10 +26,6 @@
                 <a class="nav-link" href="{{ url_for('management.management') }}">Management</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>
 
