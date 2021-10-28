@@ -1,4 +1,4 @@
-{% extends 'utils/nav.html' %}
+{% extends 'products/nav_products.html' %}
 
 {% block title %}
 Products
@@ -9,3 +9,41 @@ Products
 active
 {% endblock %}
 
+
+{% block innertitle %}
+Products Inventory
+{% endblock %}
+
+{% block innerdescription %}
+This dashboard contains the tracked products listed below and their metadata. Click on <b>View Product</b> to see more information about the product including quantity available, pricing and descriptions.
+{% endblock %}
+
+
+{% block innerbody %}
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+            {% for header in headings %}
+          <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in data.iterrows() %}
+        <tr>
+            <td>{{ value[0] }}</td>
+            <td>{{ value[1] }}</td>
+            <td>{{ value[2] }}</td>
+            <td>{{ value[3] }}</td>
+            <td>{{ value[4] }}</td>
+            <td>{{ value[5] }}</td>
+            <td><a href="/products/lookup/{{ value[0] }}">{{ value[6] }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

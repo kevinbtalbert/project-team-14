@@ -1,0 +1,38 @@
+{% extends 'products/nav_products.html' %}
+
+{% block title %}
+Product Lookup
+{% endblock %}
+
+{% block product_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Product Lookup
+{% endblock %}
+
+{% block innerdescription %}
+Use this utility to search for a product and its information.
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+
+                        <label for="exampleInputEmail1">Product Name</label>
+                        <dl>{{ render_field(form.product, class="form-control") }}</dl>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}
