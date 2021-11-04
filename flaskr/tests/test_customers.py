@@ -51,6 +51,7 @@ class TestCustomersRoute(TestTestingConfig):
         - Test status code of GET request is 200 (OK)
         """
         response = self.client.get("/customers/lookup/1/edit_profile")
+        print(response)
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
