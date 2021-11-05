@@ -2,75 +2,65 @@ import requests
 from flaskr.tests.test_config import TestTestingConfig
 
 
-class TestCustomersRoute(TestTestingConfig):
+class TestProductsRoute(TestTestingConfig):
 
-    def test_customers(self):
+    def test_products(self):
         """
-        Test the "/customers" route
+        Test the "/products" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/")
+        response = self.client.get("/products/")
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
-    def test_new_customers(self):
+    def test_new_product(self):
         """
-        Test the "/customers/new" route
+        Test the "/products/new" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/new")
+        response = self.client.get("/products/new")
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
-    def test_lookup_customer(self):
+    def test_lookup_product(self):
         """
-        Test the "/customers/lookup" route
+        Test the "/products/lookup" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/lookup")
+        response = self.client.get("/products/lookup")
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
-    def test_customer_profile_by_id(self):
+    def test_product_by_id(self):
         """
-        Test the "/customers/lookup/<id>" route
+        Test the "/products/lookup/<id>" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/lookup/1")
+        response = self.client.get("/products/lookup/1")
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
-    def test_edit_customer_profile_by_id(self):
+    def test_edit_product_by_id(self):
         """
-        Test the "/customers/lookup/<id>/edit_profile" route
+        Test the "/products/lookup/<id>/edit_product" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/lookup/1/edit_profile")
+        response = self.client.get("/products/lookup/1/edit_profile")
         print(response)
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
 
-    def test_edit_customer_sizing_by_id(self):
+    def test_delete_product_by_id(self):
         """
-        Test the "/customers/lookup/<id>/edit_sizing" route
+        Test the "/products/lookup/<id>/delete_product" route
         - Test successful GET request to the route
         - Test status code of GET request is 200 (OK)
         """
-        response = self.client.get("/customers/lookup/1/edit_sizing")
-        self.assertIsNotNone(response)
-        self.assertEqual(response.status_code, 200)
-
-    def test_delete_customer_by_id(self):
-        """
-        Test the "/customers/lookup/<id>/delete_profile" route
-        - Test successful GET request to the route
-        - Test status code of GET request is 200 (OK)
-        """
-        response = self.client.get("/customers/lookup/1/delete_profile")
+        response = self.client.get("/products/lookup/1/delete_product")
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
