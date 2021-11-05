@@ -346,7 +346,7 @@ class DB_Commands:
 
 
     @staticmethod
-    def search_module(search_string):
+    def search_module(product_name):
         """
         Method to find a product id by product name
         Uses fuzzywuzzy module to locate highest likelihood product in database
