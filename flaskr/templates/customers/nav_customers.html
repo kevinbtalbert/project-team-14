@@ -1,7 +1,7 @@
 {% extends 'utils/nav.html' %}
 
 {% block body %}
-
+{% if current_user.is_authenticated %}
 <div class="container-fluid">
     <div class="row">
       <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -42,5 +42,5 @@
       </main>
     </div>
   </div>
-
+{% endif %}
 {% endblock %}

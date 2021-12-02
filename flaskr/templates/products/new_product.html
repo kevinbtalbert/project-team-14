@@ -9,15 +9,19 @@ active
 {% endblock %}
 
 {% block innertitle %}
+{% if current_user.is_authenticated %}
 Add New Product to Inventory
+{% endif %}
 {% endblock %}
 
 {% block innerdescription %}
+{% if current_user.is_authenticated %}
 Use this form to add a new product to the inventory.
+{% endif %}
 {% endblock %}
 
 {% block innerbody %}
-
+{% if current_user.is_authenticated %}
 {% from "macros/_formhelpers.html" import render_field %}
 <div class="container">
     <div class="row">
@@ -52,5 +56,5 @@ Use this form to add a new product to the inventory.
 
 </div> <!-- /container -->
 
-
+{% endif %}
 {% endblock %}

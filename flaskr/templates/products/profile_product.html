@@ -17,7 +17,6 @@ You are viewing <b>{{ data[4] }}'s</b> product <b>{{ data[1] }}</b>, first creat
 {% endblock %}
 
 {% block innerbody %}
-{% if current_user.is_authenticated %}
 
 <div class="jumbotron rounded bg-white justify-content-center">
     <div class="container rounded bg-white justify-content-center">
@@ -59,17 +58,19 @@ You are viewing <b>{{ data[4] }}'s</b> product <b>{{ data[1] }}</b>, first creat
                 </tbody>
             </table>
             <br>
+            {% if current_user.is_authenticated %}
             <div class="buttons">
                 <a href="{{ data[0] }}/edit_product"> <button class="btn btn-outline-primary px-4">Change Product
                         Data</button> </a>
                 <a href="{{ data[0] }}/delete_product">
                     <button class="btn btn-primary px-4 ms-3">Delete Product</button> </a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
 </div>
 
-{% endif %}
+
 
 {% endblock %}

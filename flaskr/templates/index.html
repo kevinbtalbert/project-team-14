@@ -26,25 +26,39 @@ active
     <div class="row">
         <div class="col-md-4">
             <h2>Create Customer Profile</h2>
-            <p>The Black Tie Management System is an all-in-one web application with
-                an end-to-end solution tailored for a clothing store’s unique needs.</p>
+            <p>Use this link to create a new customer profile. (Requires Login)</p>
+            {% if current_user.is_authenticated %}
             <p><a class="btn btn-secondary" href="{{ url_for('customers.new_customer') }}" role="button">Create Profile »</a></p>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <p><a class="btn btn-secondary" href="{{ url_for('.login') }}" role="button">Create Profile »</a></p>
+            {% endif %}
         </div>
         <div class="col-md-4">
             <h2>Lookup Customer Profile</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
+            <p>Use this link to lookup detailed customer profile information. (Requires Login) </p>
+            {% if current_user.is_authenticated %}
             <p><a class="btn btn-secondary" href="{{ url_for('customers.lookup_customer') }}" role="button">Lookup Profile »</a></p>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <p><a class="btn btn-secondary" href="{{ url_for('.login') }}" role="button">Lookup Profile »</a></p>
+            {% endif %}
         </div>
         <div class="col-md-4">
             <h2>Product Catalog</h2>
-            <p>View the product catalog.</p>
+            <p>Use this link to view the product catalog.</p>
             <p><a class="btn btn-secondary" href="{{ url_for('products.products') }}" role="button">View Catalog »</a></p>
         </div>
     </div>
 
     <hr>
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center"> <img src="{{ url_for('static', filename='favicon_btms/btms_full.png') }}" width="100" class="rounded-circle"> </div>
+        </div>
+    </div>
 
 </div> <!-- /container -->
 

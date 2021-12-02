@@ -1,0 +1,65 @@
+{% extends 'management/nav_management.html' %}
+
+{% block title %}
+Management
+{% endblock %}
+
+{% block management_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Modify User Account
+{% endblock %}
+
+{% block innerdescription %}
+You are editing {{ data[1] }} {{ data[2] }}'s user account.
+<p><b>Manager</b> role grants full application access.</p>
+<p><b>Marketing</b> role grants the entitlements of an Associate as well as Marketing access.</p>
+<p><b>Associate</b> role grants Products/Customers application access.</p>
+<p><b>Delete</b> removes a user's access and delete's their account.</p>
+{% endblock %}
+
+{% block innerbody %}
+{% from "macros/_formhelpers.html" import render_field %}
+{% if current_user.is_authenticated %}
+<div class="jumbotron rounded bg-white justify-content-center">
+    <div class="container rounded bg-white justify-content-center">
+        <form method="post">
+            <div class="row">
+                <div class="col">
+                    <span>First Name</span>
+                    <dl>{{ render_field(form.first_name, class="form-control", placeholder=data[1], autofocus="") }}</dl>
+                    <span>Last Name</span>
+                    <dl>{{ render_field(form.last_name, class="form-control", placeholder=data[2], autofocus="") }}</dl>
+                </div>
+                <div class="col">
+                    {% if not current_user.role == data[3] %}
+                    <span>Role</span>
+                    <dl>{{ render_field(form.role, class="form-control", placeholder=data[3], autofocus="") }}</dl>
+                    {% endif %}
+                    <span>Username</span>
+                    <dl>{{ render_field(form.username, class="form-control", placeholder=data[4], autofocus="") }}</dl>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-outline-primary px-4">Update User</button>
+        </form>
+    </div>
+    <div class="text-center mt-3">
+        <div class="buttons">
+            <button class="btn btn-primary px-4 ms-3" onclick="goBack()">Cancel Edit</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}

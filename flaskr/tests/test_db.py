@@ -339,16 +339,3 @@ class TestDB(TestTestingConfig):
         self.assertEquals(DB_Commands.find_product_by_id(add_product_response), [])
 
 
-    def test_search_module(self):
-        """
-        Test the search module functionality
-        - Run a sample test and ensure product id returned is the expected response
-        """
-        product_name = "Calvin Klein Men's X-Fit Solid Tan Slim-Fit Suit"
-        response = DB_Commands.search_module(product_name)
-        print(response)
-        assert response is not None
-        for id in response:
-            if id[0] == 1:
-                self.assertEqual(id[0], 1)
-

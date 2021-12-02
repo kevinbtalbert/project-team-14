@@ -1,0 +1,53 @@
+{% extends 'management/nav_management.html' %}
+
+{% block title %}
+Management
+{% endblock %}
+
+{% block management_tab_active %}
+active
+{% endblock %}
+
+{% block innertitle %}
+Create New User
+{% endblock %}
+
+{% block innerdescription %}
+Use this form to create a new user and assign permissions.
+<p><b>Manager</b> role grants full application access.</p>
+<p><b>Marketing</b> role grants the entitlements of an Associate as well as Marketing access.</p>
+<p><b>Associate</b> role grants Products/Customers application access.</p>
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <dl>{{ render_field(form.first_name, class="form-control") }}</dl>
+                <label for="exampleInputEmail1">Last Name</label>
+                <dl>{{ render_field(form.last_name, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Role</label>
+                <dl>{{ render_field(form.role, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <dl>{{ render_field(form.username, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Default Password (User can change when they login)</label>
+                <dl>{{ render_field(form.password, class="form-control") }}</dl>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}

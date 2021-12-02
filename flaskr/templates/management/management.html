@@ -1,10 +1,46 @@
-{% extends 'utils/nav.html' %}
+{% extends 'management/nav_management.html' %}
 
 {% block title %}
 Management
 {% endblock %}
 
-
 {% block management_tab_active %}
 active
+{% endblock %}
+
+{% block innertitle %}
+Active Users Directory
+{% endblock %}
+
+{% block innerdescription %}
+This dashboard contains the users currently with access to the Black Tie Management system and their access role.
+{% endblock %}
+
+
+{% block innerbody %}
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+            {% for header in headings %}
+          <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in data.iterrows() %}
+        <tr>
+            <td>{{ value[0] }}</td>
+            <td>{{ value[1] }}</td>
+            <td>{{ value[2] }}</td>
+            <td>{{ value[3] }}</td>
+            <td>{{ value[4] }}</td>
+            <td><a href="/management/lookup/{{ value[0] }}">{{ value[5] }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
 {% endblock %}

@@ -9,6 +9,15 @@ class BaseConfig(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = os.getenv("SECRET_KEY", "b9d55c8721affe136a87dffcbb581")
+    MAIL_SERVER = 'localhost'
+    MAIL_PORT = 25
+    MAIL_USE_TLS: True
+    MAIL_USE_SSL: False
+    MAIL_USERNAME: 'username@uncc.edu'
+    MAIL_PASSWORD: 'mypassword'
+    MAIL_DEFAULT_SERVER: 'mail.uncc.edu'
+    MAIL_MAX_EMAILS: None
+    MAIL_SUPPRESS_SEND: True
 
 
 class DevelopmentConfig(BaseConfig):
