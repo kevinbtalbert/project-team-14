@@ -3,10 +3,13 @@ import logging
 from flask import Flask, render_template, url_for, request, redirect
 from flask_login import LoginManager, login_manager, login_required, logout_user, login_user, current_user
 from flaskr.models import User
-from flaskr.db import Auth
-from flaskr.forms import LoginForm
+from flaskr.db import Auth, DB_Commands
+from flaskr.forms import LoginForm, ModifyUserForm, SearchUserById
 from flaskext.mysql import MySQL
 import pandas as pd
+from flask_mail import Mail, Message
+
+mail = Mail()
 
 def create_app(config=None):
     app = Flask(
@@ -22,6 +25,9 @@ def create_app(config=None):
         app.config.from_object(config)
 
     logging.basicConfig(filename='btms_logging.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+
+    mail.init_app(app)
+    mail.app = app
 
     mysql = MySQL()
     mysql.init_app(app)
@@ -76,6 +82,33 @@ def create_app(config=None):
         Profile viewer which shows individual's profile who is logged into the app
         """
         return render_template("utils/my_profile.html")
+
+    @app.route('/my_profile/<id>', methods=('GET', 'POST'))
+    def edit_my_profile_by_id(id):
+        """
+        Route for editing user's profile by id
+        :param id: represents the numerical id of the user in the database
+        :return: rendered template
+        """
+        edit_user_form = ModifyUserForm(request.form)
+        try:
+            search_string = id.data['search']
+        except:
+            search_string = str(id)
+            id = SearchUserById(request.form)
+            id.data['search'] = search_string
+        
+        if request.method == "POST":
+            username = edit_user_form.data['username']
+            if username != "":
+                Auth.update_user(search_string, username=username)
+            password = edit_user_form.data['password']
+            if password != "":
+                Auth.update_user(search_string, password=password)
+            return redirect(url_for('my_profile'))
+
+        profile_data = Auth.find_user_information(search_string)
+        return render_template("utils/edit_my_profile.html", data=profile_data, form=edit_user_form)
     
     @app.errorhandler(404)
     def page_not_found(e):

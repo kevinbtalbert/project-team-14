@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, SelectField, RadioField
+from wtforms import Form, StringField, SelectField, RadioField, TextAreaField
 from wtforms.validators import DataRequired, Required
 from wtforms.widgets.core import Select
 
@@ -73,3 +73,34 @@ class SearchProductById(Form):
 class LoginForm(Form):
     username = StringField('', validators=[DataRequired()])
     password = StringField('', validators=[DataRequired()])
+
+
+# This form captures email campaign information
+class EmailForm(Form):
+    subject = StringField('', validators=[DataRequired()])
+    body = TextAreaField('', validators=[DataRequired()])
+
+
+# This form captures the ability to lookup a user account by id
+class SearchUserById(Form):
+    id = StringField('', validators=[DataRequired()])
+
+
+# This form allows for creation/modification of a user's account data
+class UserForm(Form):
+    ROLES = ["associate", "marketing", "manager"]
+    first_name = StringField('', validators=[DataRequired()])
+    last_name = StringField('', validators=[DataRequired()])
+    role = SelectField('', choices=ROLES)
+    username = StringField('', validators=[DataRequired()])
+    password = StringField('', validators=[DataRequired()])
+
+
+# This form allows for modification of a user's account data
+class ModifyUserForm(Form):
+    ROLES = ["associate", "marketing", "manager", "delete"]
+    first_name = StringField('')
+    last_name = StringField('')
+    role = SelectField('', choices=ROLES)
+    username = StringField('')
+    password = StringField('')

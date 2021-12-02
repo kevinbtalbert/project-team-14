@@ -362,6 +362,23 @@ class DB_Commands:
                     product_name = value
         return query_db("SELECT id FROM products WHERE product = ?", (product_name,))
 
+    
+    @staticmethod
+    def get_all_customer_emails():
+        """
+        Method that returns a list of all customer emails stored in the database 
+        :return: list of customer emails
+        """
+        emails = query_db("SELECT email FROM profile WHERE email IS NOT NULL")
+        customer_emails_list = []
+        for email in emails:
+            try:
+                customer_emails_list.append(email[0])
+            except:
+                pass
+        return customer_emails_list
+
+
 class Auth:
 
     @staticmethod
@@ -404,3 +421,56 @@ class Auth:
                 return [x[0], x[1], x[2], x[3], x[4]]
         except:
             return None
+
+
+    @staticmethod
+    def insert_new_user(first_name, last_name, role, username, password):
+        """
+        Command to insert a new profile based on passed in parameters
+        :param first_name: string value of first_name in the database (if not supplied, parameter assumes "None Provided")
+        :param last_name: string value of last_name in the database (if not supplied, parameter assumes "None Provided")
+        :param role: string value of role in the database (if not supplied, parameter assumes "None Provided")
+        :param username: string value of username in the database (if not supplied, parameter assumes "None Provided")
+        :param password: string value of password in the database (if not supplied, parameter assumes "None Provided")
+        :return: integer value of id, the newest profile in the database
+        """
+        update_db("INSERT INTO users (first_name, last_name, role, username, password) VALUES (?,?,?,?,?)",
+                      (first_name, last_name, role, username, password,))
+
+
+    @staticmethod
+    def update_user(id, first_name=None, last_name=None, role=None, username=None, password=None):
+        """
+        Command to update particular elements of a customer's profile
+        :param first_name: string value of first_name in the database (if not supplied, parameter assumes "None Provided")
+        :param last_name: string value of last_name in the database (if not supplied, parameter assumes "None Provided")
+        :param role: string value of role in the database (if not supplied, parameter assumes "None Provided")
+        :param username: string value of username in the database (if not supplied, parameter assumes "None Provided")
+        :param password: string value of password in the database (if not supplied, parameter assumes "None Provided")
+        """
+        args = locals()
+        for param, value in args.items():
+            if value is not None:
+                if param == "first_name":
+                    update_db(
+                        "UPDATE users SET first_name=? WHERE id=?", (value, id,))
+                if param == "last_name":
+                    update_db(
+                        "UPDATE users SET last_name=? WHERE id=?", (value, id,))
+                if param == "role":
+                    update_db(
+                        "UPDATE users SET role=? WHERE id=?", (value, id,))
+                if param == "username":
+                    update_db(
+                        "UPDATE users SET username=? WHERE id=?", (value, id,))
+                if param == "password":
+                    update_db(
+                        "UPDATE users SET password=? WHERE id=?", (value, id,))
+
+    @staticmethod
+    def delete_user(id):
+        """
+        Command to delete user's profile by id
+        :param id: integer value of id in the database
+        """
+        update_db("DELETE FROM users WHERE id=?", (id,))

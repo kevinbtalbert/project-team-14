@@ -16,9 +16,21 @@ My Profile
                 <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">{{ current_user.role }}</span>
                     <h5 class="mt-2 mb-0">{{ current_user.first_name }} {{ current_user.last_name }}</h5> <span>{{ current_user.username }}</span>
                     <div class="px-4 mt-1">
-                        <p class="fonts">Role description: </p>
+                        {% if current_user.role == "manager" %}
+                        <p class="fonts">The Manager role allows authorized individuals full application access (Products, Customers, Marketing, and Management)</p>
+                        {% endif %}
+                        {% if current_user.role == "marketing" %}
+                        <p class="fonts">The Marketing role allows authorized individuals the same entitlements as an Associate along with access to the Marketing tools (Products, Customers, and Marketing)</p>
+                        {% endif %}
+                        {% if current_user.role == "associate" %}
+                        <p class="fonts">The Associate role is the default entitlement for regular application access to add/modify product information and customer data (Products and Customers)</p>
+                        {% endif %}
                     </div>
-                    <div class="buttons"> <button class="btn btn-outline-primary px-4">Change Username</button> <button class="btn btn-primary px-4 ms-3">Change Password</button> </div>
+                    <div class="buttons"> 
+                    <form method="get" action="/my_profile/{{ current_user.id }}">
+                        <button class="btn btn-outline-primary px-4" type="submit">Change Username/Password</button>
+                    </form>
+                     
                 </div>
             </div>
         </div>

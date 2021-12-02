@@ -1,0 +1,38 @@
+{% extends 'marketing/nav_marketing.html' %}
+
+{% block title %}
+Email Campaign
+{% endblock %}
+
+{% block marketing_tab_active %}
+active
+{% endblock %}
+
+
+{% block innertitle %}
+Create a New Email Campaign
+{% endblock %}
+
+{% block innerdescription %}
+Use this form below to create a new email campaign. An email campaign allows authorized individuals to send marketing
+emails to individuals with an email on file in their profile.
+{% endblock %}
+
+{% block body %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <h4>Success!</h4>
+            <p>Use the link below to begin another Email Campaign or the navigation bar at the top of the site to perform other actions.</p>
+            <p><a class="btn btn-primary btn-lg" href="{{ url_for('marketing.marketing') }}" role="button">Start a New Email Campaign »</a></p>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+
+{% endblock %}

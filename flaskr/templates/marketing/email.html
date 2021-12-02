@@ -1,4 +1,4 @@
-{% extends 'utils/nav.html' %}
+{% extends 'marketing/nav_marketing.html' %}
 
 {% block title %}
 Email Campaign
@@ -8,7 +8,34 @@ Email Campaign
 active
 {% endblock %}
 
-{% block body %}
+
+{% block innertitle %}
+Create a New Email Campaign
+{% endblock %}
+
+{% block innerdescription %}
+Use this form below to create a new email campaign. An email campaign allows authorized individuals to send marketing emails to individuals with an email on file in their profile.
+{% endblock %}
+
+{% block innerbody %}
+
+{% from "macros/_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Subject</label>
+                <dl>{{ render_field(form.subject, class="form-control") }}</dl>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Body</label>
+                <dl>{{ render_field(form.body, class="form-control") }}</dl>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div> <!-- /container -->
 
 
 {% endblock %}

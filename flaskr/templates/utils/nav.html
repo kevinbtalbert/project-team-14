@@ -16,15 +16,21 @@
             <li class="nav-item {% block product_tab_active %}{% endblock %}">
                 <a class="nav-link" href="{{ url_for('products.products') }}">Products</a>
             </li>
+            {% if current_user.is_authenticated %}
             <li class="nav-item {% block customer_tab_active %}{% endblock %}">
                 <a class="nav-link" href="{{ url_for('customers.customers') }}">Customers</a>
             </li>
+            {% if current_user.role == "marketing" or current_user.role == "manager" %}
             <li class="nav-item {% block marketing_tab_active %}{% endblock %}">
                 <a class="nav-link" href="{{ url_for('marketing.marketing') }}">Marketing</a>
             </li>
+            {% endif %}
+            {% if current_user.role == "manager" %}
             <li class="nav-item {% block management_tab_active %}{% endblock %}">
                 <a class="nav-link" href="{{ url_for('management.management') }}">Management</a>
             </li>
+            {% endif %}
+            {% endif %}
         </ul>
     </div>
 </nav>
