@@ -69,6 +69,5 @@ def edit_user_by_id(id):
 
     profile_data = Auth.find_user_information(search_string)
 
-
     return render_template("management/edit_user.html", data=profile_data, form=edit_user_form)
 
