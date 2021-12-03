@@ -37,14 +37,3 @@ class BaseTestCase(TestCase):
         self.assertTrue(app.config["DEBUG"] is False)
         self.assertTrue(app.config["TESTING"] is False)
 
-    # MYSQL DEPRECATED
-    # def test_mysql_config(self):
-    #     """
-    #     Test MySQL Connection Settings
-    #     """
-    #     self.assertTrue(app.config["MYSQL_DATABASE_HOST"] is 'localhost')
-    #     self.assertTrue(app.config["MYSQL_DATABASE_PORT"] == 3306)
-    #     self.assertTrue(app.config["MYSQL_DATABASE_USER"] is 'Team14')
-    #     self.assertTrue(app.config["MYSQL_DATABASE_PASSWORD"] is 'password')
-    #     self.assertTrue(app.config["MYSQL_DATABASE_DB"] is 'users')
-    #     self.assertTrue(app.config["MYSQL_DATABASE_CHARSET"] is None)
