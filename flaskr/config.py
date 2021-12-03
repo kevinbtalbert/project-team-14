@@ -21,7 +21,6 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    SERVER_NAME = "localhost:8080"
     DATABASE = 'flaskr/database/appdata.db'
     DEVELOPMENT = True
     DEBUG = True
